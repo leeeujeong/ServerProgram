@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>가입되었습니다.</h1>
-	<a href="views/login/jsp">로그인</a>
+	<a href="views/login.jsp">로그인</a>
 </body>
 </html>

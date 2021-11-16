@@ -11,6 +11,7 @@ public class MemberUpdateService implements MemberService {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String name = request.getParameter("name");
 		Long point = Long.parseLong(request.getParameter("point"));
 		
 		String grade = null;
@@ -23,12 +24,13 @@ public class MemberUpdateService implements MemberService {
 		}else {
 			grade = "bronze";
 		}
+		
 		MemberDTO member = new MemberDTO();
 		member.setGrade(grade);
+		member.setName(name);
+
 		
-		MemberDAO = MemberDAO.getInstance();
-		
-		int result = dao.
+		int result = MemberDAO.getInstance().updateMember(member);
 		
 		return null;
 	}

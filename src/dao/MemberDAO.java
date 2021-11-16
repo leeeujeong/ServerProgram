@@ -29,6 +29,13 @@ private SqlSessionFactory factory;
 		ss.close();
 		return list;
 	}
+	//총 member
+	public int getTotalCount() {
+		SqlSession ss = factory.openSession();
+		int totalCount = ss.selectOne("dao.member.getTotalCount");
+		ss.close();
+		return totalCount;
+	}
 	
 	//top 반환
 	public List<MemberDTO> topList(){
@@ -36,6 +43,15 @@ private SqlSessionFactory factory;
 		List<MemberDTO> toplist = ss.selectOne("dao.member.topList");
 		ss.close();
 		return toplist;
-				
+	}
+		
+	//member 수정
+	public int updateMember(MemberDTO member) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("dao.member.updateMember", member);
+		if(result > 0)ss.commit();
+		ss.close();
+		return result;
+	
 	}
 }

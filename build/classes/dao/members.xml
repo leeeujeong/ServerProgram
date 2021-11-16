@@ -8,10 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- memberList -->
 	<select id="memberList" resultType="dto.MemberDTO">
 		SELECT no, id, name, grade, point
-		  FROM product
+		  FROM member
 		 ORDER BY no
 	</select>
-	
+	<!-- 총 member -->
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM member
+	</select>
 	
 	<!-- top member -->
 	<select id="topList" resultType="dto.MemberDTO">
@@ -21,4 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		 ORDER BY point desc)m
 		  WHERE ROWNUM =1
 	</select>
+	
+	<!-- update member -->
+	<update id="updateMember" parameterType="dto.MemberDTO">
+		UPDATE member
+		   SET no = MEMBER_SEQ.nextval, id = #{id}, name =#{name}, grade=#{grade}, point=#{point}
+	</update>
 </mapper>

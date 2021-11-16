@@ -10,7 +10,10 @@
 
 <style>
 	.wrap{
-		margin: 0 auto;
+		margin:100px;
+	}
+	.btn_area{
+		margin: 20px
 	}
 </style>
 </head>
@@ -28,7 +31,7 @@
 			<div>
 				<input type="text" name="name" id="name" placeholder="이름">
 			</div>
-			<div>
+			<div class="btn_area">
 				<button>로그인</button>
 				<a href="views/join.jsp">회원가입</a>
 			</div>

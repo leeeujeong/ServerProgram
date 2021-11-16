@@ -23,7 +23,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
-		$('#f').on('submit', function(event){
+		$('#modify_btn').on('click', function(event){
 			if($('#name').val() == '${member.name}' && $('#point').val() == '${member.point}'){
 				alert('수정할 내용이 없습니다');
 				event.preventDefault();
@@ -47,11 +47,14 @@
 		request.setCharacterEncoding("UTF-8");
 		session.setAttribute("id", request.getParameter("id"));
 		session.setAttribute("name", request.getParameter("name"));
+		session.setAttribute("no", request.getParameter("no"));
+		session.setAttribute("point", request.getParameter("point"));
+		session.setAttribute("grade", request.getParameter("grade"));
 	%>
 	<h3>회원 관리 시스템</h3>
 	<a href="views/login.jsp">로그아웃</a>
 	<hr>
-	<form id="f" action="/ServerProgram/update.do" method="post">
+	<form action="/ServerProgram/update.do" method="post">
 		<table class="manager_table">
 			<thead>
 				<tr>
@@ -76,7 +79,7 @@
 			<tfoot>
 				<tr>
 					<td colspan="4">
-						<button>수정하기</button>
+						<input type="submit" value="수정하기" id="modify_btn">
 						<input type="button" value="탈퇴하기" id="out_btn">
 					</td>
 				</tr>
